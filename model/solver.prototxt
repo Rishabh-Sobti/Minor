@@ -4,9 +4,9 @@ test_interval: 1000
 base_lr: 0.000001
 lr_policy: "step"
 gamma: 0.2
-stepsize: 100000
+stepsize: 500
 display: 20
-max_iter: 45000
+max_iter: 4500
 momentum: 0.8
 weight_decay: 0.005
 snapshot: 10000

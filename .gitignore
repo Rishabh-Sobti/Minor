@@ -1,2 +1,3 @@
-google_images_haryana/
+image/
 model/VGG_CNN_S.caffemodel
+*.h5
