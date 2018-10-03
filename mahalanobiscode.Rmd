@@ -1,0 +1,53 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+
+punjab <- read.csv("C:\\Users\\hp\\Documents\\GitHub\\Minor\\combined\\punjab.csv")
+library(dplyr)
+punjab1 <- punjab %>% select (Name , electricity , treated_water , electronics , 
+                               phone , transport)
+df1<- punjab1[ , -1 ]
+m_dist <- mahalanobis(df1, colMeans(df1), cov(df1))
+punjab$MD <- round(m_dist, 1)
+summary(punjab$MD)
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+```{r}
+
+condi<-punjab$MD>= 5.5 
+punjab$outlier<- ifelse(condi , 'yes' , 'no')
+library(plyr)
+count(punjab$outlier)
+
+
+```
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+```{r}
+punjab1 <- data.frame(punjab)
+removed <- which( punjab1$ outlier =='yes')
+punjab1<- punjab1[ -removed , ]
+punjab1 <- subset( punjab1, select = -c(outlier ,  MD ) )
+
+
+```
+
+```{r}
+write.csv(punjab1,file='C:\\Users\\hp\\Documents\\GitHub\\Minor\\combined\\punjabnooutliers.csv')
+
+```
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```{r}
+
+```
+
