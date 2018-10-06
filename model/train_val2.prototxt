@@ -2,29 +2,34 @@ name: "VGG-CNN-S"
 
 layer {
   name: "data"
-  type: HDF5_DATA
+  type: "Data"
   top: "data"
-  top: "labels"
   include {
     phase: TRAIN
   }
-  hdf5_data_param {
-    source: "hdf5_train.h5"
-    batch_size: 32
+  transform_param {
+    mirror: false
+    crop_size: 640
+    mean_file: "/home/rishabh/Desktop/Minor/Minor/data.binaryproto"
+  }
+  data_param {
+    source: "/home/rishabh/Desktop/Minor/Minor/data_lmdb"
+    batch_size: 16
+    backend: LMDB
   }
 }
 
 layer {
   name: "data"
-  type: HDF5_DATA
-  top: "data"
-  top: "labels"
+  type: "Data"
+  top: "label"
   include {
-    phase: TEST
+    phase: TRAIN
   }
-  hdf5_data_param {
-    source: "hdf5_test1.h5"
-    batch_size: 32
+  data_param {
+    source: "/home/rishabh/Desktop/Minor/Minor/labels_lmdb"
+    batch_size: 16
+    backend: LMDB
   }
 }
 
@@ -265,7 +270,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 4096
+    num_output: 256
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -295,51 +300,9 @@ layer {
 
 
 layer {
-  name: "fc7_n"
-  type: "InnerProduct"
-  bottom: "fc6_n"
-  top: "fc7_n"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  inner_product_param {
-    num_output: 256
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }   
-    bias_filler {
-      type: "constant"
-      value: 1
-    }   
-  }
-}
-
-layer {
-  bottom: "fc7_n"
-  top: "fc7_n"
-  name: "relu7_n"
-  type: "ReLU"
-}
-layer {
-  bottom: "fc7_n"
-  top: "fc7_n"
-  name: "drop7_n"
-  type: "Dropout"
-  dropout_param {
-    dropout_ratio: 0.5
-  }
-}
-
-layer {
   name: "fc8_n"
   type: "InnerProduct"
-  bottom: "fc7_n"
+  bottom: "fc6_n"
   top: "fc8_n"
   param {
     lr_mult: 1
@@ -366,7 +329,7 @@ layer {
   name: "accuracy"
   type: "Accuracy"
   bottom: "fc8_n"
-  bottom: "label"
+  bottom: "labels"
   top: "accuracy"
   accuracy_param {
     top_k: 5
@@ -380,6 +343,6 @@ layer {
   name: "loss"
   type: "EuclideanLoss"
   bottom: "fc8_n"
-  bottom: "labels"
+  bottom: "label"
   top: "loss"
 }

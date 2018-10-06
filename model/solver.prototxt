@@ -1,11 +1,9 @@
 net: "model/train_val2.prototxt"
-test_iter: 100
-test_interval: 100
 base_lr: 0.0001
 lr_policy: "step"
 gamma: 0.2
-stepsize: 500
-display: 20
+stepsize: 50
+display: 1
 max_iter: 4500
 momentum: 0.8
 weight_decay: 0.005
