@@ -2,7 +2,6 @@
 # Create the LMDB for the data instances
 # Both train and validation lmdbs can be created using this 
 # The file is adapted from BVLC Caffe, and requires Caffe tools
-# Author: Sukrit Shankar 
 # -------------------------------------------------------------------
 
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+

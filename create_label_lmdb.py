@@ -22,7 +22,7 @@ import caffe
 
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 # Please set the following values and paths as per your needs 
-N = 1955									# Number of data instances  
+N = 3955									# Number of data instances  
 M = 5									# Number of possible labels for each data instance 
 output_lmdb_path = '/home/rishabh/Desktop/Minor/Minor'   	# Path of the output label LMDB
 labels_mat_file = 'labels.mat'							# Mat file for labels N x M 

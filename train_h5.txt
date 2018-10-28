@@ -1,7 +1,0 @@
-hdf5_train0.h5
-hdf5_train1.h5
-hdf5_train2.h5
-hdf5_train3.h5
-hdf5_train4.h5
-hdf5_train5.h5
-hdf5_train6.h5
