@@ -14,7 +14,7 @@ layer {
   }
   data_param {
     source: "/home/rishabh/Desktop/Minor/Minor/data_lmdb"
-    batch_size: 8
+    batch_size: 10
     backend: LMDB
   }
 }
@@ -28,8 +28,11 @@ layer {
   }
   data_param {
     source: "/home/rishabh/Desktop/Minor/Minor/labels_lmdb"
-    batch_size: 8
+    batch_size: 10
     backend: LMDB
+  }
+  transform_param {
+    scale: 0.01
   }
 }
 
@@ -270,7 +273,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 1024
+    num_output: 512
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -312,7 +315,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 2048
+    num_output: 1024
     weight_filler {
       type: "gaussian"
       std: 0.01
