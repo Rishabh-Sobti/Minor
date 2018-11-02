@@ -7,7 +7,7 @@ net: "model/train_val2.prototxt"
 #max_iter: 4500
 #momentum: 0.8
 #weight_decay: 0.005
-#snapshot: 500
+#snapshot: 550
 #snapshot_prefix: "caffenet_train"
 solver_mode: CPU
 # Adam 
@@ -17,6 +17,6 @@ momentum2: 0.999
 lr_policy: "fixed"
 display: 1
 max_iter: 10000
-snapshot: 500
+snapshot: 550
 snapshot_prefix: "caffenet_train"
 type: "Adam"

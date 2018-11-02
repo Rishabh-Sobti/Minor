@@ -1,3 +1,5 @@
 image/
 model/VGG_CNN_S.caffemodel
 *.h5
+*.caffemodel
+*.solverstate
