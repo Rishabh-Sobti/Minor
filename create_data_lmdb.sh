@@ -6,10 +6,10 @@
 
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 # Please set the appropriate paths
-EXAMPLE=/home/rishabh/Desktop/Minor/Minor       			# Path where the output LMDB is stored
-DATA=/home/rishabh/Desktop/Minor/Minor       			# Path where the data.txt file is present 
-TOOLS=/home/rishabh/caffe/build/tools    			# Caffe dependency to access the convert_imageset utility 
-DATA_ROOT=/     			# Path prefix for each entry in data.txt
+EXAMPLE= C:/Users/hp/Documents/GitHub/Minor/      			# Path where the output LMDB is stored
+DATA=C:/Users/hp/Documents/GitHub/Minor/       			# Path where the data.txt file is present 
+TOOLS=C:/Users/hp/caffe/build/install/bin/   			# Caffe dependency to access the convert_imageset utility 
+DATA_ROOT=C:/Users/hp/Documents/GitHub/Minor/		# Path prefix for each entry in data.txt
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 # ----------------------------
@@ -17,6 +17,7 @@ DATA_ROOT=/     			# Path prefix for each entry in data.txt
 if [ ! -d "$DATA_ROOT" ]; then
   echo "Error: DATA_ROOT is not a path to a directory: $DATA_ROOT"
   echo "Set the DATA_ROOT variable to the path where the data instances are stored."
+  sleep 10s
   exit 1
 fi
 
@@ -27,9 +28,9 @@ fi
     $DATA_ROOT \
     $DATA/data.txt \
     $EXAMPLE/data_lmdb
-
+sleep 10s
 # ------------------------------
 echo "Done."
 
 
-
+sleep 10s

@@ -5,26 +5,26 @@
 # -------------------------------------------------------------------
 
 # -------------------------------------
-import pylab as pltss
-from pylab import *
+#import pylab as pltss
+#from pylab import *
 import numpy as np
-import matplotlib.pyplot as plt 
+#import matplotlib.pyplot as plt 
 import scipy 
 import scipy.io
 import os.path
 import lmdb						# May require 'pip install lmdb' if lmdb not found 
 
 # -------- Import Caffe ---------------
-caffe_root = '/home/rishabh/caffe/' 
+caffe_root = 'C:/Users/hp/caffe/' 
 import sys 
 sys.path.insert(0, caffe_root + 'python')
 import caffe
 
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 # Please set the following values and paths as per your needs 
-N = 3955									# Number of data instances  
+N = 5954									# Number of data instances  
 M = 5									# Number of possible labels for each data instance 
-output_lmdb_path = '/home/rishabh/Desktop/Minor/Minor'   	# Path of the output label LMDB
+output_lmdb_path = 'C:/Users/hp/Documents/GitHub/Minor/'   	# Path of the output label LMDB
 labels_mat_file = 'labels.mat'							# Mat file for labels N x M 
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -54,7 +54,7 @@ with env.begin(write=True) as txn:
         datum.height = X.shape[2]
         datum.width = X.shape[3]
         datum.data = X[i].tostring()  	# or .tobytes() if numpy < 1.9 
-        datum.label = y[i]
+        datum.label = int(y[i])
         str_id = '{:08}'.format(i)
 
         # The encode is only essential in Python 3

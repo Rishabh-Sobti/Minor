@@ -6,9 +6,9 @@
 
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 # Please set the appropriate paths
-EXAMPLE=/home/rishabh/Desktop/Minor/Minor       			# Path where the input LMDB is stored
-DATA=/home/rishabh/Desktop/Minor/Minor      			# Path where the output mean file is stored
-TOOLS=/home/rishabh/caffe/build/tools    			# Caffe dependency to access the compute_image_mean utility 
+EXAMPLE=C:/Users/hp/Documents/GitHub/Minor       			# Path where the input LMDB is stored
+DATA=C:/Users/hp/Documents/GitHub/Minor      			# Path where the output mean file is stored
+TOOLS=C:/Users/hp/caffe/build/install/bin/   	    			# Caffe dependency to access the compute_image_mean utility 
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 # ------------------------------
@@ -17,3 +17,4 @@ $TOOLS/compute_image_mean $EXAMPLE/data_lmdb \
 
 # ------------------------------
 echo "Done."
+sleep 10s
